@@ -350,6 +350,7 @@ class Generic_Sniffs_Classes_UnusedUseStatementSniff implements PHP_CodeSniffer_
             $namespaceEndPtr = $phpcsFile->findNext(T_NAMESPACE, $stackPtr);
         }
 
+        $namespaceEndPtr = max(array_keys($tokens));
         if ($namespaceEndPtr < $stackPtr) {
             // Only possible if the use statement is outside a namespace in a file using braced
             // namespaces, which is illegal
